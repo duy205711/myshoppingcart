@@ -1,5 +1,5 @@
-# == Schema Information
-#
+# frozen_string_literal: true
+
 # Table name: orders_products
 #
 #  id         :integer          not null, primary key

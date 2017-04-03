@@ -1,4 +1,6 @@
-# == Schema Information
+# frozen_string_literal: true
+
+# == Schema Informatio
 #
 # Table name: orders
 #
@@ -28,5 +30,5 @@ class Order < ApplicationRecord
   belongs_to :user, optional: true
   has_many :orders_products
   has_many :products, through: :orders_products
-  enum status: [:open, :processing, :completed, :cancelled]
+  enum status: %i(open processing completed cancelled)
 end
