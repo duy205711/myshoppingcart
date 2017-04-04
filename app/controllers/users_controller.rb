@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: %i(edit update destroy)
   before_action :correct_user, only: %i(edit update)
   before_action :check_admin, only: %i(index destroy)
+
   def new
     @user = User.new
   end
