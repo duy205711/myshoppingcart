@@ -1,0 +1,19 @@
+<header class='navbar navbar-fixed-top navbar-inverse'>
+  <div class='container'>
+    <%= link_to 'SHOPPING CART', '#', id: 'logo' %>
+    <nav>
+      <ul class='nav navbar-nav navbar-left mhead'>
+        <li class='menusp'><%= link_to 'Danh mục sản phẩm',   '#' %></li>
+        <li id='search'>
+        <form  method='get'>
+          <input type='text' name='search_text' id='search_text' placeholder='Search'/>
+          <input type='button' name='search_button' id='search_button'></a>
+        </form>
+    </li>
+      </ul>
+      <ul class='nav navbar-nav navbar-right'>
+        <li><%= link_to 'Log in', '#' %></li>
+      </ul>
+    </nav>
+  </div>
+</header>
