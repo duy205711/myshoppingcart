@@ -12,8 +12,8 @@ module SessionsHelper
     session.delete(:user_id)
     @current_user = nil
   end
-  # Returns the current logged-in user (if any).
 
+  # Returns the current logged-in user (if any).
   def current_user
     if (user_id = session[:user_id])
       @current_user ||= User.find_by(id: user_id)
@@ -50,7 +50,7 @@ module SessionsHelper
   end
 
   # Redirects to stored location (or to the default).
-  def redirect_back_or(default)
+  def redirect_back_or_redirect_to(default)
     redirect_to(session[:forwarding_url] || default)
     session.delete(:forwarding_url)
   end
