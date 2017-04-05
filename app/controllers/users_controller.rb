@@ -23,14 +23,14 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:success] = 'User deleted'
+    flash[:success] = t('messages.users.success_destroyed')
     redirect_to users_url
   end
 
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      flash[:success] = 'Profile updated'
+      flash[:success] = t('messages.users.success_updated')
       redirect_to @user
     else
       render 'edit'
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = 'Welcome to the Sample App!'
+      flash[:success] = t('messages.users.welcome_message')
       redirect_to @user
     else
       render 'new'
@@ -57,7 +57,7 @@ class UsersController < ApplicationController
   def logged_in_user
     return if logged_in?
     store_location
-    flash[:danger] = 'Please log in.'
+    flash[:danger] = t('messages.users.login_required')
     redirect_to login_url
   end
 

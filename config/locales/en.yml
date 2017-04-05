@@ -20,6 +20,13 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  home_page:
+  header:
     menu: 'Menu Products'
     title: 'Shopping cart'
+  messages:
+    users:
+      login_failed: 'Invalid email/password combination'
+      success_destroyed: 'User deleted'
+      success_updated: 'Profile updated'
+      welcome_message: 'Welcome to the Sample App!'
+      login_required: 'Please login!'
