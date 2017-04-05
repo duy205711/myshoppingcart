@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170403084847) do
+ActiveRecord::Schema.define(version: 20170404100630) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(version: 20170403084847) do
     t.datetime "delivery_time_min"
     t.datetime "delivery_time_max"
     t.integer  "status"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["email"], name: "index_orders_on_email"
     t.index ["order_number"], name: "index_orders_on_order_number"
     t.index ["user_id"], name: "index_orders_on_user_id"
@@ -76,6 +76,10 @@ ActiveRecord::Schema.define(version: 20170403084847) do
     t.string   "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "password_digest"
+    t.string   "remember_digest"
+    t.boolean  "admin",           default: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end

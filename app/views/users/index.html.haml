@@ -1,0 +1,7 @@
+%h1 All users
+.col-md-12
+  = will_paginate
+  %ul.users
+    - @users.each do |user|
+      %li= render user
+  = will_paginate
