@@ -8,23 +8,22 @@
             %a{:href => "#"}
               = t'.menu'
           %li#search
-            %form{:method => "get"}
-              %input#search_text{:name => "search_text", :placeholder => "Search", :type => "text"}/
-              %input#search_button{:name => "search_button", :type => "button"}/
+            = form_tag do
+              = text_field_tag :search_text, nil, placeholder: 'Search'
+              = text_field_tag :search_button, nil, type: 'button'
         %ul.nav.navbar-nav.navbar-right
           - if logged_in?
             - if current_user.admin?
               %li= link_to 'User', users_path
             %li.dropdown
               = gravatar_for current_user, size: 40
-              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#", :style => "float: right;"}
+              %a.dropdown-toggle{ data: { toggle: :dropdown }, href: '#', style: 'float: right'}
                 = current_user.name
                 %b.caret
               %ul.dropdown-menu
                 %li= link_to 'Profile', current_user
                 %li= link_to 'Settings', edit_user_path(current_user)
                 %li.divider
-                %li
-                  = link_to 'Log out', logout_path, method: 'delete'
+                %li= link_to 'Log out', logout_path, method: 'delete'
           - else
             %li= link_to 'Log in', login_path
