@@ -17,4 +17,8 @@ class Product < ApplicationRecord
   has_many :categories, through: :products_categories
   has_many :orders_products
   has_many :orders, through: :orders_products
+
+  validates :name, presence: true, length: { maximum: 50 }
+  validates :description, presence: true, length: { maximum: 255 }
+  validates :price, presence: true
 end

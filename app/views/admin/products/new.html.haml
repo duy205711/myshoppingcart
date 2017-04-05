@@ -1,0 +1,5 @@
+- if logged_in? && current_user.admin?
+  .row
+    %aside.col-md-4
+      %section.micropost_form
+        = render 'admin/products/product_form'
