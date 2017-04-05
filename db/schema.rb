@@ -12,12 +12,15 @@
 
 ActiveRecord::Schema.define(version: 20170404100630) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "categories", force: :cascade do |t|
     t.string   "name"
     t.integer  "parent_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["parent_id"], name: "index_categories_on_parent_id"
+    t.index ["parent_id"], name: "index_categories_on_parent_id", using: :btree
   end
 
   create_table "orders", force: :cascade do |t|
@@ -38,11 +41,11 @@ ActiveRecord::Schema.define(version: 20170404100630) do
     t.datetime "delivery_time_min"
     t.datetime "delivery_time_max"
     t.integer  "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_orders_on_email"
-    t.index ["order_number"], name: "index_orders_on_order_number"
-    t.index ["user_id"], name: "index_orders_on_user_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["email"], name: "index_orders_on_email", using: :btree
+    t.index ["order_number"], name: "index_orders_on_order_number", using: :btree
+    t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
 
   create_table "orders_products", force: :cascade do |t|
@@ -50,8 +53,8 @@ ActiveRecord::Schema.define(version: 20170404100630) do
     t.integer  "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["order_id"], name: "index_orders_products_on_order_id"
-    t.index ["product_id"], name: "index_orders_products_on_product_id"
+    t.index ["order_id"], name: "index_orders_products_on_order_id", using: :btree
+    t.index ["product_id"], name: "index_orders_products_on_product_id", using: :btree
   end
 
   create_table "products", force: :cascade do |t|
@@ -67,19 +70,21 @@ ActiveRecord::Schema.define(version: 20170404100630) do
     t.integer  "category_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["category_id"], name: "index_products_categories_on_category_id"
-    t.index ["product_id"], name: "index_products_categories_on_product_id"
+    t.index ["category_id"], name: "index_products_categories_on_category_id", using: :btree
+    t.index ["product_id"], name: "index_products_categories_on_product_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "password_digest"
     t.string   "remember_digest"
     t.boolean  "admin",           default: false
-    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
+  add_foreign_key "orders_products", "orders"
+  add_foreign_key "orders_products", "products"
 end
