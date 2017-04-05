@@ -1,0 +1,24 @@
+AllCops:
+  TargetRubyVersion: 2.3
+  Rails:
+    Enabled: true
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - !ruby/regexp /old_and_unused\.rb$/
+Style/Encoding:
+  Enabled: false
+Style/Lambda:
+  Description: 'Use the new lambda literal syntax for single-line blocks.'
+  StyleGuide: 'https://github.com/bbatsov/ruby-style-guide#lambda-multi-line'
+  Enabled: false
+Metrics/LineLength:
+  Max: 100
+Documentation:
+  Enabled: false
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+  SupportedStyles:
+    - compact
+    - nested
