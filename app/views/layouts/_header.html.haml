@@ -1,12 +1,12 @@
 %body
   %header.navbar.navbar-fixed-top.navbar-inverse
     .container
-      = link_to t('header.title'), root_url, id: 'logo'
+      = link_to t('header.title'), root_path, id: 'logo'
       %nav
         %ul.nav.navbar-nav.navbar-left.mhead
           %li
             %a{:href => "#"}
-              = t'.menu'
+              = t('.menu')
           %li#search
             = form_tag do
               = text_field_tag :search_text, nil, placeholder: 'Search'
