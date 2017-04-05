@@ -8,9 +8,9 @@
             %a{:href => "#"}
               = t('.menu')
           %li#search
-            = form_tag do
+            = form_tag root_path, method: :get do
               = text_field_tag :search_text, nil, placeholder: 'Search'
-              = text_field_tag :search_button, nil, type: 'button'
+              = submit_tag '', id: 'search_button'
         %ul.nav.navbar-nav.navbar-right
           - if logged_in?
             - if current_user.admin?
