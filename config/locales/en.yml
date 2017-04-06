@@ -26,6 +26,8 @@ en:
   messages:
     product:
       success_create: 'This producr has been create.!.'
+      success_updated: 'Product updated'
+      success_destroyed: 'Product destroyed'
     users:
       login_failed: 'Invalid email/password combination'
       success_destroyed: 'User deleted'

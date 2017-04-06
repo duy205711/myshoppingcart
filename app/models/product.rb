@@ -18,9 +18,9 @@ class Product < ApplicationRecord
   has_many :orders_products
   has_many :orders, through: :orders_products
 
-  validates :name, presence: true, length: { maximum: 50 }
-  validates :description, presence: true, length: { maximum: 255 }
-  validates :price, presence: true
-  validates :picture, presence: true
+  validates :name, presence: true, length: { maximum: 50 }, allow_nil: true
+  validates :description, presence: true, length: { maximum: 255 }, allow_nil: true
+  validates :price, presence: true, allow_nil: true
+  validates :picture, presence: true, allow_nil: true
   mount_uploader :picture, PictureUploader
 end
