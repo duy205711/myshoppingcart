@@ -1,18 +1,17 @@
-%li
-  %session.col-md-3.col-md-offset-2
-    %br
-    = label_tag product.name
-    %br
-    = label_tag product.description
-    %br
-    = label_tag product.price
-  %session.col-md-6
-    = image_tag(product.picture.url, size: '100x125') if product.picture?
-    %br
-  %session.col-md-3.products
-    %div.col-sm-2
-      = link_to 'Show',admin_product_path(product)
-    %div.col-sm-2
-      = link_to 'Delete',admin_product_path(product), method: :delete, data: { confirm: 'Are you sure?', type: 'btn'}
-    %div.col-sm-2
-      = link_to 'Edit',edit_admin_product_path(product)
+%session.col-md-4.col-md-offset-1
+  %br
+  = label_tag product.name
+  %br
+  = label_tag product.description
+  %br
+  = label_tag product.price
+%session.col-md-4.col-md-offset-3
+  = image_tag(product.picture.url, size: '100x125') if product.picture?
+  %br
+%session.col-md-3.products
+  %div.col-sm-3
+    = link_to 'Show',admin_product_path(product)
+  %div.col-sm-3
+    = link_to 'Delete',admin_product_path(product), method: :delete, data: { confirm: 'Are you sure?', type: 'btn'}
+  %div.col-sm-3
+    = link_to 'Edit',edit_admin_product_path(product)

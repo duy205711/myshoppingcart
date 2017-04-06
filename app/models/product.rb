@@ -22,5 +22,7 @@ class Product < ApplicationRecord
   validates :description, presence: true, length: { maximum: 255 }, allow_nil: true
   validates :price, presence: true, allow_nil: true
   validates :picture, presence: true, allow_nil: true
+
   mount_uploader :picture, PictureUploader
+  scope :order_by_time, -> { order('created_at DESC') }
 end

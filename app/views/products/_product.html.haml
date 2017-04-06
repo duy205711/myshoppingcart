@@ -1,0 +1,11 @@
+%li
+  %session.col-md-3.col-md-offset-2
+    %br
+    = label_tag product.name
+    %br
+    = label_tag product.description
+    %br
+    = label_tag product.price
+  %session.col-md-6
+    = image_tag(product.picture.url, size: '100x125') if product.picture?
+    %hr

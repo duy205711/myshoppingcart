@@ -6,7 +6,7 @@ class Admin::ProductsController < Admin::AdminsController
   end
 
   def index
-    @products = Product.paginate(page: params[:page])
+    @products = Product.order_by_time.paginate(page: params[:page], per_page: 3)
   end
 
   def create

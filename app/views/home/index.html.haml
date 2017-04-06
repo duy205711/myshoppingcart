@@ -1,2 +1,8 @@
-.container
-  = link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary'
+.col-md-4.col-md-offset-4
+  %h1 All products
+.col-md-12
+  %ul.users
+    - @products.each do |product|
+      %li= render product
+  = will_paginate @products
+
