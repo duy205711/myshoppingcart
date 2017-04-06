@@ -7,6 +7,9 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.2'
+gem 'carrierwave', '~> 0.11.2'
+gem 'mini_magick', '~> 4.5.1'
+gem 'fog', '~> 1.38.0'
 gem 'haml', '~> 4.0.5'
 gem 'haml-rails', '~> 0.4'
 gem 'faker', '~> 1.6.6'
