@@ -32,7 +32,7 @@ class Admin::ProductsController < Admin::AdminsController
 
   def destroy
     Product.find(params[:id]).destroy
-    flash[:success] = t('messages.product.success_destroy')
+    flash[:success] = t('messages.product.success_destroyed')
     redirect_to admin_products_path
   end
 
