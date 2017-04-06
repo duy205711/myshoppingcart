@@ -1,15 +1,18 @@
 %li
   %session.col-md-3.col-md-offset-2
+    %br
     = label_tag product.name
     %br
     = label_tag product.description
     %br
     = label_tag product.price
-  %session
+  %session.col-md-6
     = image_tag(product.picture.url, size: '100x125') if product.picture?
-  - if current_user.admin?
     %br
-    %div.col-sm-1.col-sm-offset-5
+  %session.col-md-3.products
+    %div.col-sm-2
+      = link_to 'Show',admin_product_path(product)
+    %div.col-sm-2
       = link_to 'Delete',admin_product_path(product), method: :delete, data: { confirm: 'Are you sure?', type: 'btn'}
-    %div
-      = link_to 'edit',edit_admin_product_path(product)
+    %div.col-sm-2
+      = link_to 'Edit',edit_admin_product_path(product)
