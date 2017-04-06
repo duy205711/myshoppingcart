@@ -6,13 +6,13 @@ class Admin::ProductsController < Admin::AdminsController
   end
 
   def index
-    @products = Product.order_by_time.paginate(page: params[:page], per_page: 3)
+    @products = Product.order_by_time.paginate(page: params[:page], per_page: 100)
   end
 
   def create
     @product = Product.new(product_params)
     if @product.save
-      flash[:success] = t('messages.product.success_create')
+      flash[:success] = t('messages.product.success_created')
       render :show
     else
       render :new
@@ -20,7 +20,7 @@ class Admin::ProductsController < Admin::AdminsController
   end
 
   def edit
-    @product = Product.find(params[:id])
+    @product = find_product
   end
 
   def update
@@ -37,12 +37,20 @@ class Admin::ProductsController < Admin::AdminsController
   end
 
   def show
-    @product = Product.find(params[:id])
+    @product = find_product
   end
 
   private
 
   def product_params
     params.require(:product).permit(:name, :description, :price, :picture)
+  end
+
+  private
+
+  def find_product
+    product = Product.find_by(id: params[:id])
+    return redirect_to root_path if product.blank?
+    product
   end
 end

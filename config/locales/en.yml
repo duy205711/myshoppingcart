@@ -25,7 +25,7 @@ en:
     title: 'Shopping cart'
   messages:
     product:
-      success_create: 'This product has been create.!.'
+      success_created: 'This product has been created'
       success_updated: 'Product updated'
       success_destroyed: 'Product destroyed'
     users:

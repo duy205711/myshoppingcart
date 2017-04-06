@@ -1,7 +1,7 @@
 .col-md-4.col-md-offset-4
   %h1 All products
 .col-md-8
-  %ul.users
+  %ul.index_products
     - @products.each do |product|
       %li= render product
   = will_paginate
