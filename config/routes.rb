@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   namespace :admin do
-    resources :products, only: %i(new create edit update destroy)
+    resources :products
   end
   resources :products, only: %i(show index)
 end

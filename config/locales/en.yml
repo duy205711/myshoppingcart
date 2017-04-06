@@ -24,6 +24,8 @@ en:
     menu: 'Menu Products'
     title: 'Shopping cart'
   messages:
+    product:
+      success_create: 'This producr has been create.!.'
     users:
       login_failed: 'Invalid email/password combination'
       success_destroyed: 'User deleted'
