@@ -11,7 +11,9 @@ class Admin::ProductsController < Admin::AdminsController
 
   def create
     @product = Product.new(product_params)
-    if @product.save
+    category = Category.find_by(name: catelories_params)
+    if @product.save && category
+      @product.categories << category
       flash[:success] = t('messages.product.success_created')
       render :show
     else
@@ -46,11 +48,13 @@ class Admin::ProductsController < Admin::AdminsController
     params.require(:product).permit(:name, :description, :price, :picture)
   end
 
-  private
-
   def find_product
     product = Product.find_by(id: params[:id])
     return redirect_to root_path if product.blank?
     product
+  end
+
+  def catelories_params
+    params.require(:category)
   end
 end

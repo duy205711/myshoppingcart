@@ -17,5 +17,8 @@ class Category < ApplicationRecord
   has_many :products_categories
   has_many :products, through: :products_categories
 
-  validates :name, presence: true, length: { maximum: 25 }, allow_nil: true
+  validates :name, presence: true,
+                   length: { maximum: 25 },
+                   uniqueness: true,
+                   allow_nil: true
 end
