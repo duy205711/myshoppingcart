@@ -13,6 +13,6 @@
         %session
           = image_tag(@product.picture.url, size: '100x125',alt: 'Icon') if @product.picture? if current_user.admin?
         = f.file_field :picture
-        = f.submit class: "btn btn-primary form-control"
+        = f.submit class: 'btn btn-primary form-control'
 
 
