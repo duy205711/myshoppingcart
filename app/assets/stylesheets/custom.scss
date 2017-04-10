@@ -165,7 +165,7 @@ footer ul li {
   margin-left: 0;
 }
 
-.users {
+.users, .index_products {
   list-style: none;
   margin: 0;
 
@@ -174,4 +174,16 @@ footer ul li {
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
   }
+}
+
+span.picture {
+  margin-top: 10px;
+
+  input {
+    border: 0;
+  }
+}
+
+.product-item{
+  margin-left: 64%;
 }

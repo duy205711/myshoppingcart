@@ -24,6 +24,10 @@ en:
     menu: 'Menu Products'
     title: 'Shopping cart'
   messages:
+    product:
+      success_created: 'This product has been created'
+      success_updated: 'Product updated'
+      success_destroyed: 'Product destroyed'
     users:
       login_failed: 'Invalid email/password combination'
       success_destroyed: 'User deleted'

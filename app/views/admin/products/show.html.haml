@@ -1,0 +1,10 @@
+.container.nav.col-md-4.col-md-offset-1
+  %h1
+    %session.col-md-12
+      = label_tag @product.name
+    %session.col-md-12
+      = label_tag @product.description
+    %session.col-md-12
+      = label_tag @product.price
+.container.nav.col-md-4
+  = image_tag @product.picture.url if @product.picture?

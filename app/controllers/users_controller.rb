@@ -44,7 +44,7 @@ class UsersController < ApplicationController
       flash[:success] = t('messages.users.welcome_message')
       redirect_to @user
     else
-      render 'new'
+      render :new
     end
   end
 
