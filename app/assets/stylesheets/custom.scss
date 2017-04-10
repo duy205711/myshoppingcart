@@ -184,6 +184,87 @@ span.picture {
   }
 }
 
-.product-item{
+.product-item {
   margin-left: 64%;
+}
+
+.top-nav {
+  height: 84px;
+}
+
+.top-menu {
+  width: 100%;
+  background: rgb(64, 151, 119);
+}
+
+.text-color {
+  color: white;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #FFFFFF;
+}
+
+.top-container {
+  display: flex;
+  margin-top: 20px;
+}
+
+.hotline {
+  margin-left: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.hotline_img {
+  margin-left: 30px;
+}
+
+.ship {
+  margin-left: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ship_img {
+  margin-left: 30px;
+}
+
+.books {
+  margin-left: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.books_img {
+  margin-left: 30px;
+}
+
+.welcome_user {
+  margin-left: 80px;
+  display: flex;
+}
+
+.login_user {
+  list-style: none;
+  margin-left: 10px;
+  display: flex;
+
+  .btn {
+    padding: 0;
+  }
+}
+
+.wellcome_title{
+  margin-left: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo_img {
+  margin-right: 60px;
+}
+
+.name_user {
+  margin-left: 15px;
 }
