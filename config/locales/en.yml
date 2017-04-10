@@ -24,6 +24,10 @@ en:
     menu: 'Menu Products'
     title: 'Shopping cart'
   messages:
+    category:
+      success_created: 'This category has been created'
+      success_updated: 'Category updated'
+      success_destroyed: 'Category destroyed'
     product:
       success_created: 'This product has been created'
       success_updated: 'Product updated'

@@ -1,0 +1,7 @@
+= form_for(@category) do |f|
+  = render 'shared/error_messages', object: f.object
+  %h1 Categories detail
+  %div
+    = f.label :name
+    = f.text_field :name, placeholder: 'Enter name of category', class: 'form-control'
+    = f.submit class: 'btn btn-primary form-control'
