@@ -33,17 +33,16 @@
                       %li.divider
                     %li= link_to 'Log out', logout_path, method: 'delete'
                 - else
-                  %li= link_to 'Log in', login_path, class: 'btn'
+                  = link_to 'Sign in', "#", data: {toggle: "modal", target: "#myModal"}, class: 'btn'
                   %p.btn|
                   %li= link_to 'Register',  new_user_path, class: 'btn'
-    %nav.navbar
+    %nav.navbar-default
       .container.top-menu
         = link_to t('header.title'), root_path, id: 'logo', class: 'text-color'
         %nav
           %ul.nav.navbar-nav.navbar-left.text-color
             %li
-              %a{:href => "#"}
-                = t('.menu')
+              = link_to 'Click Here', "#", data: {toggle: "modal", target: "#myModal"}
             %li#search
               = form_tag root_path, method: :get do
                 = text_field_tag :search_text, nil, placeholder: 'Search'
@@ -65,3 +64,22 @@
                   %li= link_to 'Create Product', new_admin_product_path
                   %li= link_to 'Products', admin_products_path
               %li= link_to 'User', users_path
+
+#myModal.modal.fade{:role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header.modal-header-background
+        %button.close{"data-dismiss" => "modal", :type => "button"} ×
+        %h4.modal-title SIGN IN
+      .modal-body
+        = form_for(:session, url: login_path) do |f|
+          = f.label :email
+          = f.email_field :email, class: 'form-control'
+          = f.label :password
+          = f.password_field :password, class: 'form-control'
+          %br
+          = f.label :remember_me, class: 'checkbox inline' do
+            = f.check_box :remember_me
+            %span Remember me on this computer
+          = f.submit 'Log in', class: 'btn btn-primary'
+          New user? #{link_to 'Sign up now!', signup_path}

@@ -193,6 +193,7 @@ span.picture {
 }
 
 .top-menu {
+  position: fixed;
   width: 100%;
   background: rgb(64, 151, 119);
 }
@@ -270,17 +271,15 @@ span.picture {
   }
 }
 
+.modal-header-background {
+  background-color: #409777;
+  margin: 5px;
 
+  h4 {
+    color: white;
+  }
 
-
-
-
-
-
-
-
-
-
-
-
-
+  .close {
+    color: white;
+  }
+}
