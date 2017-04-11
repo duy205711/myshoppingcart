@@ -193,7 +193,7 @@ span.picture {
 }
 
 .top-menu {
-  position: fixed;
+  margin-top: 20px;
   width: 100%;
   background: rgb(64, 151, 119);
 }
@@ -265,6 +265,10 @@ span.picture {
 
         .name_user {
           margin-left: 15px;
+        }
+
+        .dropdown:hover .dropdown-menu {
+          display: block;
         }
       }
     }
