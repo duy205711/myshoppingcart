@@ -21,8 +21,14 @@
 
 en:
   header:
+    about_to_release: 'The books about to release'
+    new_books: 'New release books'
+    discount_books: 'Discount Bookstore'
+    sellers: 'Best sellers'
     menu: 'Menu Products'
     title: 'Shopping cart'
+    comic: 'Comics'
+    stoty: 'Stoties'
   messages:
     category:
       success_created: 'This category has been created'

@@ -1,0 +1,15 @@
+%table.fixed-layout.multicolumns-list.template-grid-list.table-width
+  %tbody
+    %tr
+      - products = Product.get_new_book.each do |product|
+        %td.product-spacer
+        %td.compact
+          %form
+            .product_thumb
+              = link_to image_tag(product.picture.url, border: 0,size: '115x183'), product_path(product), class: 'image-border'
+            %p.price-info-nd
+              = link_to product.name, product_path(product)
+            .price-wrap
+              %span.price
+                %span.price-num= product.price
+                %span.price-num đ

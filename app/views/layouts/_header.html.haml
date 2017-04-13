@@ -38,11 +38,40 @@
                   %li= link_to 'Register',  new_user_path, class: 'btn'
   %nav.navbar-default.navbar-static-top.top-menu
     .container
-      = link_to t('header.title'), root_path, id: 'logo', class: 'text-color'
       %nav
         %ul.nav.navbar-nav.navbar-left.text-color
-          %li
-            = link_to 'Click Here', "#", data: {toggle: "modal", target: "#myModal"}
+          %li.dropdown
+            %a.dropdown-toggle.btn-is-disabled{ data: { toggle: :dropdown }, href: '#'}
+              MENU LIST BOOKS
+              %b.caret
+            %ul.dropdown-menu.dropdown-menu-category.multi-level.dropdown-catelory
+              %li.level0
+                %a{:href => "#", class: 'data-menu-category'}= t('header.discount_books')
+              %li.level0
+                %a{:href => "#", class: 'data-menu-category'}= t('header.sellers')
+              %li.level0
+                %a{:href => "#", class: 'data-menu-category'}= t('header.new_books')
+              %li.level0
+                %a{:href => "#", class: 'data-menu-category'}= t('header.about_to_release')
+              %li.level0
+                %a{:href => "#", class: 'data-menu-category'}= t('header.comic')
+              %li.level0
+                %a{:href => "#", class: 'data-menu-category'}= t('header.story')
+              %li.dropdown-submenu.level0
+                %a{:href => "#", :tabindex => "-1"} Story
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "#"} Second level
+                  %li
+                    %a{:href => "#"} Second level
+              %li.dropdown-submenu.level0.only-border-top
+                %a{:href => "#", :tabindex => "-1"} Comic
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "#"} Second level
+                  %li
+                    %a{:href => "#"} Second level
+
           %li#search
             = form_tag root_path, method: :get do
               = text_field_tag :search_text, nil, placeholder: 'Search'

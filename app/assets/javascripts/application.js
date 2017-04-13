@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jssor.slider-23.1.0.min
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
-

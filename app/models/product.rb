@@ -25,4 +25,5 @@ class Product < ApplicationRecord
 
   mount_uploader :picture, PictureUploader
   scope :order_by_time, -> { order('created_at DESC') }
+  scope :get_new_book, -> { order(id: :desc).limit(5) }
 end

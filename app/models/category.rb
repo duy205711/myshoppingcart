@@ -21,4 +21,6 @@ class Category < ApplicationRecord
                    length: { maximum: 25 },
                    uniqueness: true,
                    allow_nil: true
+  scope :get_comic_book, -> { Category.find_by(name: 'Comic').products.limit(5) }
+  scope :get_story_book, -> { Category.find_by(name: 'Story').products.limit(5) }
 end
