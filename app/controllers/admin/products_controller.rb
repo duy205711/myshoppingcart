@@ -27,7 +27,7 @@ class Admin::ProductsController < Admin::AdminsController
 
   def update
     @product = Product.find(params[:id])
-    render edit_admin_product_path(@product) unless @product.update_attributes(product_params)
+    return render :edit unless @product.update_attributes(product_params)
     flash[:success] = t('messages.product.success_updated')
     redirect_to admin_product_path(@product)
   end
@@ -45,7 +45,8 @@ class Admin::ProductsController < Admin::AdminsController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :price, :picture)
+    params.require(:product)
+          .permit(:name, :author, :publisher, :description, :price, :picture, :package, :discount_price, :quantity)
   end
 
   def find_product

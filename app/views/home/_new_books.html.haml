@@ -10,6 +10,14 @@
             %p.price-info-nd
               = link_to product.name, product_path(product)
             .price-wrap
+            - if product.discount_price.nil?
               %span.price
                 %span.price-num= product.price
+                %span.price-num đ
+            - else
+              %span.price.col-md-12
+                %span#decoration-text.price-num= product.price
+                %span#decoration-text.price-num đ
+              %span.price.price.col-md-12
+                %span.price-num= product.discount_price
                 %span.price-num đ

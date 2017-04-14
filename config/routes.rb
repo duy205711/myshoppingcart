@@ -5,10 +5,12 @@ Rails.application.routes.draw do
   resources :users
   get 'sessions/new'
   get '/signup', to: 'users#new'
-  get '/login', to: 'sessions#new'
-  post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
+  get '/login', to: 'session_customers#new'
+  post '/login', to: 'session_customers#create'
+  delete '/logout', to: 'session_customers#destroy'
 
+  resources :session_customers, only: %i(new create destroy)
+  resources :customers
   namespace :admin do
     resources :products
   end

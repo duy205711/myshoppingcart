@@ -4,13 +4,23 @@
   %div
     = f.label :name
     = f.text_field :name, placeholder: 'Enter name of product...', class: 'form-control'
+    = f.label :author
+    = f.text_field :author, placeholder: 'Who is author?', class: 'form-control'
+    = f.label :publisher
+    = f.text_field :publisher, placeholder: 'Which is publisher?', class: 'form-control'
     = f.label :price
     = f.number_field :price, placeholder: 'How much is it?', class: 'form-control'
+    = f.label :discount_price
+    = f.number_field :discount_price, placeholder: 'How much is the discounted product?', class: 'form-control'
     = f.label :description
     = f.text_area :description, placeholder: 'Compose description for product...', class: 'form-control'
     = f.label :Catelogies
     = select_tag 'category', options_for_select(Category.all.collect{ |u| [u.name] }), prompt: 'Select one category', class: 'btn btn-danger form-control'
     = f.label :Picture
     = f.file_field :picture
+    = f.label :Package
+    = f.check_box :package
+    = f.label :quantity
+    = f.number_field :quantity, placeholder: 'How many it is?', class: 'form-control'
     = f.submit class: "btn btn-primary form-control"
 

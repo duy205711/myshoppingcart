@@ -5,10 +5,10 @@
     .h2= @product.name
     .product-author-share
       %label Tác giả:
-      = link_to @product.name
+      = link_to @product.author
       %br
       %label Nhà phát hành:
-      = link_to 'Nhà phát hành'
+      = link_to @product.publisher
       %br
       %label Tags:
       - @product.categories.each do |f|
@@ -20,9 +20,10 @@
       %br
       .sub-title Thông tin kèm theo
       %ul.info-logistic
-        %li
-          %strong Có dịch vụ bọc sách plastic cao cấp cho sách này
-          =link_to '(Chi tiết )'
+        - if @product.package == true
+          %li
+            %strong Có dịch vụ bọc sách plastic cao cấp cho sách này
+            =link_to '(Chi tiết )'
         %li
           Miễn phí giao hàng toàn quốc cho Đơn hàng từ 250.000đ (Áp dụng từ 1/2/2015.
           =link_to '(Chi tiết )'
@@ -33,30 +34,40 @@
         %span.list-price
           %span.list-price-label Giá bìa:
         %span.strike
-          %span.list-price.nowrap= a =  (@product.price + @product.price * 0.5)
-          %span.list-price.nowrap ₫
-      .price-wrap
-        %span.list-price
-          %span.list-price-label Giá bán:
-        %span.strike
-          %span.list-price.price-num= b = @product.price
-          %span.list-price.price-num ₫
-      .price-wrap
-        %span.list-price
-          %span.list-price-label Tiết kiệm
-        %span.strike
-          %span.list-price.save-price= c = a-b
-          %span.list-price.save-price ₫
-          %span.list-price.save-price (
-          %span.list-price.save-price= '%.0f'%(c/a*100)
-          %span.list-price.save-price %)
+          - if @product.discount_price.nil?
+            %span.list-price.unnowrap= @product.price
+            %span.list-price.unnowrap ₫
+          - else
+            %span.list-price.nowrap= @product.price
+            %span.list-price.nowrap ₫
+      - if !@product.discount_price.nil?
+        .price-wrap
+          %span.list-price
+            %span.list-price-label Giá bán:
+          %span.strike
+            %span.list-price.price-num= @product.discount_price
+            %span.list-price.price-num ₫
+        .price-wrap
+          %span.list-price
+            %span.list-price-label Tiết kiệm
+          %span.strike
+            %span.list-price.save-price= @product.price - @product.discount_price
+            %span.list-price.save-price ₫
+            %span.list-price.save-price (
+            %span.list-price.save-price= '%.0f'%((@product.price - @product.discount_price)/@product.price*100)
+            %span.list-price.save-price %)
     .box-status
-      .status
-        .product-list-field
-          %pan.qty-in-stock Sắp Có Hàng
-        .product-list-field
-          %label Có hàng từ
-          %span.qty_expected= Time.now.strftime("%d-%m-%Y")
+      - if  !@product.quantity.nil? && @product.quantity > 0
+        .status
+          .product-list-field
+            %pan.qty-in-stock Có Hàng
+          .product-list-field
+            %label Có hàng từ
+            %span.qty_expected= @product.created_at.strftime("%d-%m-%Y")
+      - else
+        .status
+          .product-list-field
+            %pan.qty-not-in-stock Tạm Hết Hàng
     .buttons-container
       %span.button-submit-big.button-wrap-right
         = link_to 'ĐẶT HÀNG TRƯỚC', '#', class: 'btn button-submit'

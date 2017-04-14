@@ -122,6 +122,17 @@
             color: #087b39;
           }
 
+          .qty-not-in-stock{
+            padding-left: 25px;
+            padding-bottom: 0px;
+            height: 30px;
+            white-space: nowrap;
+            background: url(https://cdn2.iconfinder.com/data/icons/picons-essentials/71/unable-512.png) left 4px no-repeat;
+            line-height: 30px;
+            background-size: 26px;
+            color: black;
+          }
+
           .qty_expected {
             margin-left: 10px;
             color: #4b4a44 !important;
@@ -158,6 +169,11 @@
           .nowrap {
             white-space: nowrap;
             text-decoration: line-through;
+            line-height: 1.538;
+          }
+
+          .unnowrap {
+            white-space: nowrap;
             line-height: 1.538;
           }
 
