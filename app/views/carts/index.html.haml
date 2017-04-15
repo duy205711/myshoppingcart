@@ -1,0 +1,49 @@
+.container.product-info
+  .content-list-product
+    .list-product
+      %h3 Giỏ hàng
+      %span
+        (
+        = @cart.cart_products.size
+        sản phẩm)
+      - @cart.cart_products.includes(:product).order(updated_at: :desc).each do |cart_product|
+        .row-shopping-cart-item
+          .thumb-image
+            = image_tag(cart_product.product.picture.url, size: '115x120', alt: cart_product.product.name, title: cart_product.product.name)
+          .content-product
+            %h4= cart_product.product.name
+            %br
+            %p.note
+              Cung cấp bởi
+              =link_to 'shoppingcart', root_path
+            =link_to 'delete', cart_path(id: cart_product.id), method: :delete
+          .content-price
+            %span.price#content-price
+              %span.price-num= cart_product.product.price
+              %span.price-num đ
+            - if !cart_product.product.discount_price.nil?
+              %span.price#content-price
+                %span.price-num#decoration-text= cart_product.product.discount_price
+                %span.price-num#decoration-text đ
+          .num-quantity
+            = form_for(:cart_product_update, url: cart_path(cart_product.id), method: :PATCH) do |f|
+              = f.number_field :quantity, min: 1, max: 100, value:cart_product.quantity
+              = f.hidden_field :cart_product_id, value: cart_product.id
+              = f.submit 'Update', class: 'btn'
+    .calculater-price
+      .panel.panel-default.fee
+        .panel-body
+          %p
+            %b Tạm tính:
+            %span
+              = estimate_price(@cart.cart_products)
+              đ
+        .panel-body.total2
+          %p
+            %b Thành tiền:
+            %span
+              = estimate_price(@cart.cart_products)
+              đ
+            %i include VAT
+      .btn.btn-large.btn-block.btn-default.btn-checkout Proceed the order
+

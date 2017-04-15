@@ -69,5 +69,10 @@
           .product-list-field
             %pan.qty-not-in-stock Tạm Hết Hàng
     .buttons-container
-      %span.button-submit-big.button-wrap-right
-        = link_to 'ĐẶT HÀNG TRƯỚC', '#', class: 'btn button-submit'
+      = form_for(:cart,url: carts_path) do |f|
+        %span.button-submit-big.button-wrap-right
+          = f.label 'số lượng'
+          = f.number_field :quantity, min: 1
+          = f.hidden_field :customer_id, value: current_customer.id
+          = f.hidden_field :product_id, value: @product.id
+          = f.submit 'ĐẶT HÀNG TRƯỚC', class: 'btn button-submit'

@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: categories
@@ -8,7 +7,7 @@
 #  name       :string
 #  parent_id  :integer
 #  created_at :datetime         not null
-#  updated_at :datetime         not nul
+#  updated_at :datetime         not null
 #
 
 class Category < ApplicationRecord

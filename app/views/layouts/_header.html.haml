@@ -77,7 +77,7 @@
               = text_field_tag :search_text, nil, placeholder: 'Search'
               = submit_tag '', id: 'search_button'
           %li
-            = link_to 'Order', '#', class: 'btn button-order', id: 'btn-order'
+            = link_to 'Order', carts_path, class: 'btn button-order', id: 'btn-order'
         %ul.nav.navbar-nav.navbar-right
           - if logged_in? && current_user.admin?
             %li.dropdown

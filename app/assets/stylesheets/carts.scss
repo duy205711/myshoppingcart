@@ -1,0 +1,132 @@
+// Place all the styles related to the Carts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.content-list-product {
+  display: flex;
+  justify-content: center;
+  .list-product {
+    display: flex;
+    flex-direction: column;
+
+    .row-shopping-cart-item {
+      display: flex;
+      margin-bottom: 15px;
+      .thumb-image {
+        padding-bottom: 5px;
+        flex-basis: 125px;
+        max-height: 110px;
+        max-width: 125px;
+        margin: 10px;
+        border: 5px;
+        border-style: ridge;
+        border-color: green;
+      }
+
+      .content-product {
+        flex-basis: 250px;
+        max-width: 250px;
+        display: flex;
+        flex-direction: column;
+
+        h4 {
+          margin-top: 0px;
+        }
+
+        .note{
+          color: #777;
+          font-size: 12px;
+          margin-bottom: 10px;
+        }
+      }
+
+      #content-price {
+        margin-left: 10px;
+        display: flex;
+      }
+
+      .num-quantity {
+        margin-top: 10px;
+        margin-left: 50px;
+      }
+    }
+  }
+
+  .calculater-price {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 268px;
+    max-width: 268px;
+    max-height: 114px;
+    justify-content: center;
+    margin-left: 50px;
+    margin-top: 100px;
+
+    .btn-checkout {
+      width: 270px;
+      height: 147px;
+      color: #fff;
+      padding: 12px;
+      border: 1px solid #cd1233;
+      outline-color: #ccc;
+      background: -webkit-linear-gradient(#e54d42,#d72041)
+    }
+
+    .btn-checkout:hover {
+      background: #e54d42;
+    }
+
+    .panel {
+      margin-bottom: 20px;
+      background-color: #fff;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+      box-shadow: 0 1px 1px rgba(0,0,0,.05);
+      -webkit-box-shadow: none;
+      box-shadow: none;
+     -webkit-border-radius: 3px;
+     -moz-border-radius: 3px;
+     -ms-border-radius: 3px;
+     -o-border-radius: 3px;
+    }
+
+    .fee {
+      margin-top: 15px;
+      font-size: 12px;
+      margin-bottom: 15px;
+    }
+
+    .panel-default {
+      border-color: #ddd;
+
+      .panel-body {
+        font-size: 12px;
+        padding: 15px;
+
+        b {
+          font-weight: 400;
+        }
+
+        span {
+          float: right;
+        }
+      }
+
+      .total2 {
+        border-top: 3px solid #e54d42;
+        padding-top: 12px;
+        margin-bottom: 0;
+        line-height: 19px;
+
+        span {
+          color: #ee2347;
+          font-size: 19px;
+        }
+
+        i {
+          float: right;
+        }
+      }
+    }
+  }
+}

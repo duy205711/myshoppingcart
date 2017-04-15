@@ -1,18 +1,26 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: products
 #
-#  id          :integer          not null, primary key
-#  name        :string
-#  description :string
-#  price       :decimal(, )
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id             :integer          not null, primary key
+#  name           :string
+#  description    :string
+#  price          :decimal(, )
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  picture        :string
+#  author         :string
+#  publisher      :string
+#  package        :boolean          default("false")
+#  discount_price :decimal(, )
+#  available      :boolean          default("false")
+#  quantity       :decimal(, )
 #
 
 class Product < ApplicationRecord
+  has_many :cart_products
+  has_many :carts, through: :cart_products
   has_many :products_categories
   has_many :categories, through: :products_categories
   has_many :orders_products
