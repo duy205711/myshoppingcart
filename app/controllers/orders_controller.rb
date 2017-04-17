@@ -9,6 +9,8 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
+    @cart = Cart.find_by(customer_id: current_customer)
+    @customer = current_customer
     @order.customer_id = current_customer.id
     if @order.save
       ConfirmMailMailer.email_of_customer(current_customer).deliver

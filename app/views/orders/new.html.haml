@@ -40,6 +40,7 @@
                       %span.price-num#sub-price-num đ
     .content-info-customer
       = form_for @order do |f|
+        = render 'shared/error_messages', object: f.object
         .field
           = f.label :name
         .field
