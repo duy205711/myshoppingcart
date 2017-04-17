@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-# Table name: cart_products
 #
 #  id         :integer          not null, primary key
 #  cart_id    :integer

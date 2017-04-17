@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170414055328) do
+ActiveRecord::Schema.define(version: 20170417044513) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,22 +55,24 @@ ActiveRecord::Schema.define(version: 20170414055328) do
     t.string   "order_number"
     t.integer  "user_id"
     t.string   "name"
-    t.float    "total_prices"
+    t.integer  "total_prices"
     t.integer  "total_products"
     t.string   "email"
     t.text     "address"
     t.integer  "address_type"
     t.string   "phone"
     t.text     "info"
-    t.integer  "payment_type"
+    t.integer  "payment_type",      default: 0
     t.integer  "delivery_type"
-    t.float    "delivery_fee"
+    t.integer  "delivery_fee"
     t.boolean  "receipt_required"
     t.datetime "delivery_time_min"
     t.datetime "delivery_time_max"
-    t.integer  "status"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.integer  "status",            default: 0
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "customer_id"
+    t.index ["customer_id"], name: "index_orders_on_customer_id", using: :btree
     t.index ["email"], name: "index_orders_on_email", using: :btree
     t.index ["order_number"], name: "index_orders_on_order_number", using: :btree
     t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
@@ -123,6 +125,7 @@ ActiveRecord::Schema.define(version: 20170414055328) do
   add_foreign_key "cart_products", "carts"
   add_foreign_key "cart_products", "products"
   add_foreign_key "carts", "customers"
+  add_foreign_key "orders", "customers"
   add_foreign_key "orders_products", "orders"
   add_foreign_key "orders_products", "products"
 end

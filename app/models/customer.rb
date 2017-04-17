@@ -19,7 +19,7 @@
 class Customer < ApplicationRecord
   before_save { self.email = email.downcase }
 
-  has_one :cart
+  has_one :cart, dependent: :destroy
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   has_secure_password
   validates :name, presence: true, length: { maximum: 50 }

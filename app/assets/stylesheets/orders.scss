@@ -1,0 +1,110 @@
+// Place all the styles related to the Orders controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.checkout-one-step {
+  max-width: 1050px;
+  border: 1px solid #d2d2d2;
+  margin-bottom: 30px;
+
+  .content-product {
+    flex-basis: 30px!important;
+  }
+
+  .list-product {
+    display: flex;
+
+    .content-list-product {
+      display: flex;
+      width: 525px!important;
+      border-right: 1px solid #d2d2d2;
+
+      h4 {
+        max-width: 230px;
+        font-size: 15px!important;
+      }
+
+      .thumb-image {
+        max-width: 90px!important;
+      }
+
+      .group-image-price {
+        margin-top: 15px;
+        display: flex!important;
+        flex-direction: column!important;
+      }
+    }
+
+    .content-info-customer {
+      display: flex;
+      margin-left: 60px;
+    }
+  }
+
+  .checkout-header {
+    background-color: #008340;
+    height: 66px;
+    position: relative;
+
+    .title-order {
+      color: white;
+      font-size: 20px;
+      font-family: Roboto, Arial, Helvetica, sans-serif;
+      color: #fefefe;
+      text-transform: uppercase;
+      white-space: normal;
+      text-align: left;
+      margin-left: 30px;
+      width: 1050px;
+      display: block;
+      clear: both;
+      line-height: 66px;
+      position: relative;
+      cursor: default !important;
+    }
+  }
+
+  .checkout-one-step-content {
+    display: flex;
+    justify-content: center;
+
+    h2 {
+      text-align: center;
+      height: 60px;
+      border-bottom: 1px dashed #d2d2d2;
+      flex-basis: 350px;
+      font-family: Roboto, Arial, Helvetica, sans-serif;
+      font-size: 19px;
+      color: #008340;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    #border-lr {
+      border-left: 1px solid #d2d2d2;
+
+    }
+  }
+
+  .content-info-type-ship {
+    margin-left: 100px;
+  }
+}
+
+.hidden-item {
+  display: none;
+}
+
+#sub-price-num {
+  color: red;
+  font-size: 20px;
+}
+
+#sum-price {
+  color: red;
+  font-size: 20px;
+}
+
+#title-sum-price {
+  color: black;
+  font-size: 20px;
+}

@@ -3,7 +3,7 @@
 class CartsController < ApplicationController
   def index
     # @cart = Cart.find_or_create_by(customer_id: current_customer.id)
-    @cart = Cart.find_by(customer_id: current_customer.id)
+    @cart = Cart.find_or_create_by(customer_id: current_customer.id)
   end
 
   def create

@@ -45,5 +45,5 @@
               = estimate_price(@cart.cart_products)
               đ
             %i include VAT
-      .btn.btn-large.btn-block.btn-default.btn-checkout Proceed the order
+      = link_to 'Proceed the order', new_order_path, class: 'btn btn-large btn-block btn-default btn-checkout'
 

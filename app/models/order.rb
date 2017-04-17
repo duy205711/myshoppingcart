@@ -28,7 +28,10 @@
 
 class Order < ApplicationRecord
   belongs_to :user, optional: true
+  belongs_to :customer, optional: true
   has_many :orders_products
   has_many :products, through: :orders_products
   enum status: %i(open processing completed cancelled)
+  enum type_address: %i(home company)
+  enum payment_type: %i(payment_on_delivery)
 end
