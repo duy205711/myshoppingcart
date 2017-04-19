@@ -1,0 +1,74 @@
+.checkout-one-step.col-md-offset-1
+  .checkout-header
+    .title-order thanh toán đơn hàng
+  .checkout-one-step-content
+    %h2 Products
+    %h2#border-lr Info
+  .list-product
+    .content-list-product
+      .list-product
+        - @cart.cart_products.includes(:product).order(updated_at: :desc).each do |cart_product|
+          .row-shopping-cart-item
+            .thumb-image
+              = image_tag(cart_product.product.picture.url, size: '80x100', alt: cart_product.product.name, title: cart_product.product.name)
+            .group-image-price
+              .content-product
+                %h4= cart_product.product.name
+                %br
+              .content-price
+                - if cart_product.product.discount_price.nil?
+                  %span.price#content-price
+                    %span.price-num= cart_product.product.price
+                    %span.price-num đ/product
+                - if !cart_product.product.discount_price.nil?
+                  %span.price#content-price
+                    %span.price-num= cart_product.product.discount_price
+                    %span.price-num đ/product
+              .num-products
+                %span
+                  Nuber of product:
+                  = cart_product.quantity
+                %br
+                %span
+                  Sub price
+                  %span
+                    - if cart_product.product.discount_price.nil?
+                      %span#sub-price-num= cart_product.product.price * cart_product.quantity
+                      %span.price-num#sub-price-num đ
+                    - else
+                      %span#sub-price-num= cart_product.product.discount_price * cart_product.quantity
+                      %span.price-num#sub-price-num đ
+    .content-info-customer
+      = form_for @order do |f|
+        = render 'shared/error_messages', object: f.object
+        .field
+          = f.label :name
+        .field
+          = f.text_field :name, value: @customer.name, class: 'form-control'
+        .field
+          = f.label :email
+        .field
+          = f.email_field :email, value: @customer.email, class: 'form-control'
+        .field
+          = f.label :phone
+        .field
+          = f.telephone_field :phone, value: @customer.phone_number, class: 'form-control'
+        .field
+          / = f.label :birthday
+        / .field
+        /   = date_select :order, :birthday,:order => [:day, :month, :year],:start_year => 1920,:end_year => 2013
+        .field
+          = f.label :address_type
+        .field
+          = f.select :address_type, options_for_select(Order.type_addresses.map {|k, v| [k, v]})
+        .field
+          = f.label :address
+          = f.text_field :address, class: 'form-control'
+        .field
+          %br
+          = f.submit :ORDER_PRODUCTS, class: 'form-control btn-primary'
+  .content-info-type-ship
+    %span#title-sum-price Sum Price:
+    %span#sum-price= estimate_price(@cart.cart_products)
+    %span#title-sum-price đ
+

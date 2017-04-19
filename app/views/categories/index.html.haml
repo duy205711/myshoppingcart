@@ -1,0 +1,8 @@
+.row
+  .col-md-12.col-md-offset-4
+    %h1 All Calegories
+  .col-md-6
+    %ul.index_products
+      - @categories.each do |category|
+        %li= render category
+    = will_paginate (@categories)

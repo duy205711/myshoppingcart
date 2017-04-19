@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: categories
@@ -8,7 +7,7 @@
 #  name       :string
 #  parent_id  :integer
 #  created_at :datetime         not null
-#  updated_at :datetime         not nul
+#  updated_at :datetime         not null
 #
 
 class Category < ApplicationRecord
@@ -17,5 +16,10 @@ class Category < ApplicationRecord
   has_many :products_categories
   has_many :products, through: :products_categories
 
-  validates :name, presence: true, length: { maximum: 25 }, allow_nil: true
+  validates :name, presence: true,
+                   length: { maximum: 25 },
+                   uniqueness: true,
+                   allow_nil: true
+  scope :get_comic_book, -> { Category.find_by(name: 'Comic').products.limit(5) }
+  scope :get_story_book, -> { Category.find_by(name: 'Story').products.limit(5) }
 end

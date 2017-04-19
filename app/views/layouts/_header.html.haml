@@ -1,38 +1,116 @@
 %body
-  %header.navbar.navbar-fixed-top.navbar-inverse
+  %navbar.navbar-default.navbar-fixed-top
+    %nav.navbar-default.top-nav
+      .container
+        .top-container
+          %a{href: root_path, title: 'home'}
+            = image_tag('vnb_logo', size: '252x100', class: 'logo_img')
+          = image_tag('contact_icon', size: '37x33', class: 'hotline_img')
+          .hotline
+            %span Hotline
+            %span 1900561557
+          = image_tag('ship_icon', size: '44x33', class: 'ship_img')
+          .ship
+            %span Free ship
+            %span Anywhere
+          = image_tag('books_icon', size: '34x33', class: 'books_img')
+          .books
+            %span Different types of books
+            %span constantly updated
+          .welcome_user
+            = image_tag('hi_icon', size: '44x33')
+            .wellcome_title
+              %span Wellcome to Shopping Cart
+              .login_user
+                - if logged_in_customer?
+                  %li.dropdown#current_customer_name
+                    %a.name_user.dropdown-toggle{ data: { toggle: :dropdown }, href: '#', style: 'float: right'}
+                      = current_customer.name
+                      %p.btn|
+                    %ul.dropdown-menu
+                      %li= link_to 'Profile', current_customer
+                      %li= link_to 'Settings', edit_customer_path(current_customer)
+                      %li.divider
+                  %li= link_to 'Log out', session_customer_path(current_customer), method: 'delete'
+                - else
+                  = link_to 'Sign in', "#", data: {toggle: "modal", target: "#myModal"}, class: 'btn'
+                  %p.btn|
+                  %li= link_to 'Register',  new_customer_path, class: 'btn'
+  %nav.navbar-default.navbar-static-top.top-menu
     .container
-      = link_to t('header.title'), root_path, id: 'logo'
       %nav
-        %ul.nav.navbar-nav.navbar-left.mhead
-          %li
-            %a{:href => "#"}
-              = t('.menu')
+        %ul.nav.navbar-nav.navbar-left.text-color
+          %li.dropdown
+            %a.dropdown-toggle.btn-is-disabled{ data: { toggle: :dropdown }, href: '#'}
+              MENU LIST BOOKS
+              %b.caret
+            %ul.dropdown-menu.dropdown-menu-category.multi-level.dropdown-catelory
+              %li.level0
+                %a{:href => "#", class: 'data-menu-category'}= t('header.discount_books')
+              %li.level0
+                %a{:href => "#", class: 'data-menu-category'}= t('header.sellers')
+              %li.level0
+                %a{:href => "#", class: 'data-menu-category'}= t('header.new_books')
+              %li.level0
+                %a{:href => "#", class: 'data-menu-category'}= t('header.about_to_release')
+              %li.level0
+                %a{:href => "#", class: 'data-menu-category'}= t('header.comic')
+              %li.level0
+                %a{:href => "#", class: 'data-menu-category'}= t('header.story')
+              %li.dropdown-submenu.level0
+                %a{:href => "#", :tabindex => "-1"} Story
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "#"} Second level
+                  %li
+                    %a{:href => "#"} Second level
+              %li.dropdown-submenu.level0.only-border-top
+                %a{:href => "#", :tabindex => "-1"} Comic
+                %ul.dropdown-menu
+                  %li
+                    %a{:href => "#"} Second level
+                  %li
+                    %a{:href => "#"} Second level
+
           %li#search
             = form_tag root_path, method: :get do
               = text_field_tag :search_text, nil, placeholder: 'Search'
               = submit_tag '', id: 'search_button'
+          %li
+            = link_to 'Order', carts_path, class: 'btn button-order', id: 'btn-order'
         %ul.nav.navbar-nav.navbar-right
-          - if logged_in?
-            - if current_user.admin?
-              %li.dropdown
-                %a.dropdown-toggle{ data: { toggle: :dropdown }, href: '#'}
-                  Categories
-                  %b.caret
-                %ul.dropdown-menu
-                  %li= link_to 'Create Categories', new_category_path
-                  %li= link_to 'Categories', '#'
-              %li= link_to 'Products', admin_products_path
-              %li= link_to 'Create_Products', new_admin_product_path
-              %li= link_to 'User', users_path
+          - if logged_in? && current_user.admin?
             %li.dropdown
-              = gravatar_for current_user, size: 40
-              %a.dropdown-toggle{ data: { toggle: :dropdown }, href: '#', style: 'float: right'}
-                = current_user.name
+              %a.dropdown-toggle{ data: { toggle: :dropdown }, href: '#'}
+                Categories
                 %b.caret
               %ul.dropdown-menu
-                %li= link_to 'Profile', current_user
-                %li= link_to 'Settings', edit_user_path(current_user)
-                %li.divider
-                %li= link_to 'Log out', logout_path, method: 'delete'
-          - else
-            %li= link_to 'Log in', login_path
+                %li= link_to 'Create Categories', new_category_path
+                %li= link_to 'Categories', categories_path
+            %li.dropdown
+              %a.dropdown-toggle{ data: { toggle: :dropdown }, href: '#'}
+                Products
+                %b.caret
+              %ul.dropdown-menu
+                %li= link_to 'Create Product', new_admin_product_path
+                %li= link_to 'Products', admin_products_path
+            %li= link_to 'User', users_path
+
+#myModal.modal.fade{:role => "dialog", :tabindex => "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header.modal-header-background
+        %button.close{"data-dismiss" => "modal", :type => "button"} ×
+        %h4.modal-title SIGN IN
+      .modal-body
+        = form_for(:session_customers, url: session_customers_path) do |f|
+          = f.label :email
+          = f.email_field :email, class: 'form-control'
+          = f.label :password
+          = f.password_field :password, class: 'form-control'
+          %br
+          = f.label :remember_me, class: 'checkbox inline' do
+            = f.check_box :remember_me
+            %span Remember me on this computer
+          = f.submit 'Log in', class: 'btn btn-primary'
+          New user? #{link_to 'Sign up now!', signup_path}

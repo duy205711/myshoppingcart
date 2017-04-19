@@ -1,3 +1,264 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.product-info {
+  display: flex;
+  margin-left: 270px;
+
+  .image-product {
+    margin: 5px;
+    max-width: 250;
+    flex-basis: 250px;
+
+    img {
+      max-width: 250px!important;
+      max-height: 400px;
+    }
+  }
+
+  .content-product {
+    flex-basis: 400px;
+    max-width: 400px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    .product-author-share{
+      margin-top: 2px;
+      color: #22242d;
+      font-size: 13px;
+      line-height: 20px;
+
+      a {
+        color: #087b39;
+      }
+
+      .description{
+        color: #66645c;
+      }
+
+      .sub-title {
+        width: 100%;
+        padding-top: 5px;
+        border-top: 2px dashed #c7c7c7;
+        font-size: 16px;
+        font-family: "Roboto", sans-serif;
+        color: #000000;
+        line-height: 1.2;
+      }
+
+      .info-logistic {
+        margin: 0px;
+        margin-top: 0px;
+        width: 100%;
+        padding-left: 5px;
+        li {
+          list-style: none;
+          margin-top: 5px;
+          padding-left: 25px;
+          color: #22242d;
+          font-size: 12px;
+          font-family: "Roboto", sans-serif;
+          line-height: 1.667;
+          background: url(https://www.vinabook.com/design/themes/vinabook_v4/media/images/v3/dot_check.png) left 2px no-repeat;
+        }
+      }
+    }
+  }
+
+  .form-buy-product {
+    margin: 10px;
+    position: relative;
+    padding: 15px;
+    float: right;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #dcdbdb;
+    border-radius: 3px;
+    background-color: #ffffff;
+    width: 250px;
+    min-height: 210px;
+    padding-bottom: 20px;
+    margin-right: 5px;
+    -webkit-box-shadow: 0px 0px 0px 5px #e8e8e8;
+    -moz-box-shadow: 0px 0px 0px 5px #e8e8e8;
+    box-shadow: 0px 0px 0px 5px #e8e8e8;
+
+    .title {
+      font-size: 16px;
+      font-family: "Roboto", sans-serif;
+      color: #000000;
+      line-height: 1.2;
+      text-align: left;
+      border-bottom: 1px dashed #c7c7c7;
+      padding-bottom: 15px;
+      margin-bottom: 15px;
+    }
+
+    .box-status {
+      width: 100%;
+      margin-top: 0px;
+      padding-top: 8px;
+      border-top: 1px dashed #c7c7c7;
+      .status {
+        width: 100%;
+        margin-bottom: 8px;
+
+        .product-list-field {
+          margin-right: 0px;
+          height: 30px;
+          padding-left: 0px;
+          margin: 0px !important;
+          display: flex;
+          justify-content: flex-end;
+
+          .qty-in-stock {
+            padding-left: 25px;
+            padding-bottom: 0px;
+            height: 20px;
+            white-space: nowrap;
+            background: url(https://www.vinabook.com/design/themes/vinabook_v4/media/images/v3/dot_check.png) left 2px no-repeat;
+            line-height: 26px;
+            background-size: 16px;
+            color: #087b39;
+          }
+
+          .qty-not-in-stock{
+            padding-left: 25px;
+            padding-bottom: 0px;
+            height: 30px;
+            white-space: nowrap;
+            background: url(https://cdn2.iconfinder.com/data/icons/picons-essentials/71/unable-512.png) left 4px no-repeat;
+            line-height: 30px;
+            background-size: 26px;
+            color: black;
+          }
+
+          .qty_expected {
+            margin-left: 10px;
+            color: #4b4a44 !important;
+            font-size: 13px !important;
+          }
+
+          label {
+            font-weight: normal !important;
+            display: inline-block !important;
+            padding: 0px;
+            margin: 0px;
+            font-size: 13px !important;
+          }
+        }
+      }
+    }
+
+    .prices-container {
+      width: max-width;
+
+      .price-wrap {
+        display: flex;
+
+        .strike{
+          padding-left: 10px;
+          position: absolute;
+          right: 10px;
+          display: flex;
+
+          .list-price {
+            margin-bottom: 8px;
+          }
+
+          .nowrap {
+            white-space: nowrap;
+            text-decoration: line-through;
+            line-height: 1.538;
+          }
+
+          .unnowrap {
+            white-space: nowrap;
+            line-height: 1.538;
+          }
+
+          .price-num {
+            font-size: 20px;
+            font-family: "Roboto", sans-serif;
+            color: #ca2027;
+            line-height: 1.2;
+            text-align: left;
+          }
+
+          .save-price {
+            margin-left: 3px;
+            width: auto !important;
+            font-size: 15px;
+            font-family: "Roboto", sans-serif;
+            color: #353535;
+            line-height: 1.538;
+            color: #087b39;
+          }
+        }
+
+        .list-price {
+          width: 100%;
+          margin-bottom: 8px;
+          display: flex;
+          .list-price-label{
+            font-size: 15px;
+            font-family: "Roboto", sans-serif;
+            color: #404040;
+            line-height: 1.538;
+            text-align: left;
+            margin: 0px;
+            padding: 0px;
+          }
+        }
+      }
+    }
+
+    .buttons-container {
+      margin-right: 0px !important;
+      display: flex;
+      justify-content: center;
+      .button-submit-big{
+        background: transparent;
+        border: none;
+        width: auto;
+        height: auto;
+        margin: 0 auto;
+        .button-submit:hover {
+          background-color: #404040;
+          color: white;
+          background: #ffc705 url(https://image.ibb.co/bOT8Vk/icon_cart_1_2x_1.png) no-repeat 25px center;
+        }
+        .button-submit {
+          border-style: solid;
+          border-width: 1px;
+          border-color: #e1af04;
+          border-radius: 3px;
+          width: 230px;
+          padding-top: 8px;
+          padding-bottom: 8px;
+          padding-left: 60px;
+          padding-right: 20px;
+          height: 39px;
+          font-size: 14px;
+          font-family: "Roboto", sans-serif;
+          color: black!important;
+          font-weight: bold;
+          text-transform: uppercase;
+          line-height: 1.2;
+          background: #ffc705 url(https://www.vinabook.com/design/themes/vinabook_v4/media/images/icon_cart_1_2x.png) no-repeat 20px center;
+          background-size: 22px;
+          margin-left: 12px;
+          -o-transition: .2s;
+          -ms-transition: .2s;
+          -moz-transition: .2s;
+          -webkit-transition: .2s;
+          transition: .2s;
+        }
+      }
+
+      .button-wrap-right {
+        text-transform: none;
+      }
+    }
+  }
+}

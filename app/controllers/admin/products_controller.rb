@@ -11,7 +11,9 @@ class Admin::ProductsController < Admin::AdminsController
 
   def create
     @product = Product.new(product_params)
-    if @product.save
+    category = Category.find_by(name: catelories_params)
+    if @product.save && category
+      @product.categories << category
       flash[:success] = t('messages.product.success_created')
       render :show
     else
@@ -25,7 +27,7 @@ class Admin::ProductsController < Admin::AdminsController
 
   def update
     @product = Product.find(params[:id])
-    render edit_admin_product_path(@product) unless @product.update_attributes(product_params)
+    return render :edit unless @product.update_attributes(product_params)
     flash[:success] = t('messages.product.success_updated')
     redirect_to admin_product_path(@product)
   end
@@ -43,14 +45,17 @@ class Admin::ProductsController < Admin::AdminsController
   private
 
   def product_params
-    params.require(:product).permit(:name, :description, :price, :picture)
+    params.require(:product)
+          .permit(:name, :author, :publisher, :description, :price, :picture, :package, :discount_price, :quantity)
   end
-
-  private
 
   def find_product
     product = Product.find_by(id: params[:id])
     return redirect_to root_path if product.blank?
     product
+  end
+
+  def catelories_params
+    params.require(:category)
   end
 end

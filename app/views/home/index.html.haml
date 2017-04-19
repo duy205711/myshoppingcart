@@ -1,8 +1,15 @@
-.col-md-4.col-md-offset-4
-  %h1 All products
-.col-md-12
-  %ul.users
-    - @products.each do |product|
-      %li= render product
-  = will_paginate @products
-
+= render 'slider'
+.main-layout
+  .container
+    .mainbox-title
+      %span New Books
+    .mainbox-body
+      = render 'new_books'
+    .mainbox-title
+      %span Comic Books
+    .mainbox-body
+      = render 'comic_books'
+    .mainbox-title
+      %span Story Books
+    .mainbox-body
+      = render 'story_books'
